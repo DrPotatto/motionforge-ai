@@ -1,5 +1,5 @@
 import { groq } from './groq.js';
-import { gemini } from './gemini.js';
+import { gemini } from './gemini-v2.js';
 import { openrouter } from './openrouter.js';
 import { local } from './local.js';
 import { deepseek } from './deepseek.js'; 
