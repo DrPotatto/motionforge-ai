@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio — MotionForge AI</title>
+<meta name="description" content="Generate motion graphics.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b0d10">
+<meta property="og:title" content="Studio — MotionForge AI">
+<meta property="og:description" content="Generate motion graphics.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0d10'/%3E%3Cpath d='M22 68V32l14 22 14-22v36' stroke='%23ff8a3d' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand"><svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0b0d10" stroke="#232a32"/><path d="M22 68V32l14 22 14-22v36" stroke="#ff8a3d" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 68V32h16a12 12 0 0 1 0 24H62" stroke="#a78bfa" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sidebar__brand-name" data-brand>MotionForge</span></div>
+    <nav class="sidebar__nav" id="sidebar-nav"></nav>
+    <div class="sidebar__footer"><div class="sidebar__account">
+      <div class="flex items-center gap-2">
+        <div style="width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,#ff8a3d,#8b6dff);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0b0d10">MF</div>
+        <div style="min-width:0">
+          <div id="account-email" class="truncate" style="font-size:12px;font-weight:500">Local workspace</div>
+          <div style="font-size:10px;color:var(--text-muted)">Free · demo mode</div>
+        </div>
+      </div>
+      <a href="index.html" style="display:block;margin-top:8px;font-size:11px;color:var(--text-muted)">Back to site</a>
+    </div></div>
+  </aside>
+  <div class="app-main">
+    <header class="app-header">
+      <button class="btn btn-subtle sidebar-toggle" id="sidebar-toggle" aria-label="Toggle menu">☰</button>
+      <span style="font-size:13px;color:var(--text-muted)">Studio workspace</span>
+      <div class="ml-auto flex items-center gap-2">
+        <span class="chip" id="engine-chip">Local engine</span>
+        <a href="app.html" class="btn btn-primary btn-sm">New project</a>
+      </div>
+    </header>
+    <main class="app-content"><div class="container"><div class="dash">
+      <div class="label">Studio</div>
+      <h1>What will you create today?</h1>
+      <p class="lead">Describe your idea. AI plans the scenes. The engine renders them.</p>
+
+      <div class="panel panel-pad prompt-panel">
+        <textarea id="prompt" class="field" rows="5" placeholder="e.g. A 15-second cinematic launch for a premium coffee brand with kinetic typography, glowing particles, and a dramatic logo reveal."></textarea>
+        <div class="controls-row">
+          <label><span class="label">Format</span><select id="aspect" class="field field-sm mt-1"><option value="16:9">16:9 · Landscape</option><option value="9:16">9:16 · Vertical</option><option value="1:1">1:1 · Square</option><option value="4:5">4:5 · Portrait</option></select></label>
+          <label><span class="label">Duration</span><select id="duration" class="field field-sm mt-1"><option value="6">6s</option><option value="9">9s</option><option value="12" selected>12s</option><option value="15">15s</option><option value="20">20s</option><option value="30">30s</option></select></label>
+          <label><span class="label">Style</span><select id="quality" class="field field-sm mt-1"><option value="social">Fast social</option><option value="professional" selected>Professional</option><option value="cinematic">Cinematic</option></select></label>
+          <label><span class="label">Scenes</span><select id="sceneCount" class="field field-sm mt-1"><option value="3">3</option><option value="4" selected>4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option></select></label>
+          <label><span class="label">Language</span><select id="language" class="field field-sm mt-1"><option value="en" selected>English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="es">Español</option></select></label>
+          <label><span class="label">Complexity</span><select id="complexity" class="field field-sm mt-1"><option value="standard" selected>Standard</option><option value="high">High detail</option></select></label>
+        </div>
+        <div class="generate-row">
+          <button id="advanced-toggle" class="btn btn-subtle btn-sm">Show advanced</button>
+          <div class="ml-auto flex items-center gap-3">
+            <span id="status" class="status-text"></span>
+            <button id="generate-btn" class="btn btn-primary" disabled>Generate animation</button>
+          </div>
+        </div>
+        <div id="advanced" class="advanced-row hidden">
+          <label><span class="label">Accent</span><div class="flex items-center gap-2 mt-1"><input type="color" id="accent" value="#ff8a3d"><span id="accent-hex" class="mono" style="color:var(--text-muted)">#ff8a3d</span></div></label>
+          <label><span class="label">Secondary</span><div class="flex items-center gap-2 mt-1"><input type="color" id="secondary" value="#8b6dff"><span id="secondary-hex" class="mono" style="color:var(--text-muted)">#8b6dff</span></div></label>
+          <label><span class="label">Brand name</span><input id="brandName" class="field field-sm mt-1" value="MotionForge"></label>
+        </div>
+        <div id="error" class="error-box hidden" style="margin-top:16px"></div>
+      </div>
+
+      <div class="suggestion-row">
+        <div class="label">Example prompts</div>
+        <div class="chips" id="suggestions"></div>
+      </div>
+    </div></div></main>
+  </div>
+</div>
+<script src="config.js"></script>
+<script type="module" src="assets/js/pages/dashboard.js"></script>
+</body>
+</html>

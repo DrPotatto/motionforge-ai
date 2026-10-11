@@ -1,0 +1,13 @@
+{
+  "name": "motionforge-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn ideas into cinematic motion graphics. AI-directed, code-rendered, browser-exported.",
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve . -l 8080",
+    "dev": "npx --yes serve . -l 8080",
+    "deploy": "echo 'See DEPLOY.md for deployment options'"
+  },
+  "license": "MIT"
+}

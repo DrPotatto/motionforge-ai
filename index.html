@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotionForge AI — Cinematic motion from a prompt</title>
+<meta name="description" content="Turn ideas into cinematic motion graphics. Describe an idea, AI plans the scenes, a deterministic engine renders it, export a real video — all in your browser.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0d10">
+<meta property="og:title" content="MotionForge AI — Cinematic motion from a prompt">
+<meta property="og:description" content="Turn ideas into cinematic motion graphics. Describe an idea, AI plans the scenes, a deterministic engine renders it, export a real video — all in your browser.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0d10'/%3E%3Cpath d='M22 68V32l14 22 14-22v36' stroke='%23ff8a3d' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/landing.css">
+</head>
+<body>
+<header class="site-nav">
+  <div class="container site-nav__inner">
+    <a href="index.html" class="brand"><svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0b0d10" stroke="#232a32"/><path d="M22 68V32l14 22 14-22v36" stroke="#ff8a3d" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 68V32h16a12 12 0 0 1 0 24H62" stroke="#a78bfa" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-brand>MotionForge AI</span></a>
+    <nav class="site-nav__links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#templates">Templates</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <div class="site-nav__actions">
+      <a href="login.html" class="btn btn-subtle btn-sm">Sign in</a>
+      <a href="app.html" class="btn btn-primary btn-sm">Start creating</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="chip">◆ Deterministic engine · Works offline · Free AI providers</span>
+      <h1>Your ideas. <span class="gradient-text">AI-written motion.</span> Studio-quality output.</h1>
+      <p>Type an idea. Get a cinematic, editable motion graphics video. Refine timing, type, and color. Export from your browser. No install.</p>
+
+      <div class="prompt-box">
+        <textarea id="quick-prompt" rows="3" placeholder="e.g. A 15-second cinematic launch for a premium coffee brand with kinetic typography, glowing amber particles, and a dramatic logo reveal."></textarea>
+        <div class="row">
+          <select id="quick-aspect">
+            <option value="16:9">16:9 Landscape</option>
+            <option value="9:16">9:16 Vertical</option>
+            <option value="1:1">1:1 Square</option>
+            <option value="4:5">4:5 Portrait</option>
+          </select>
+          <select id="quick-duration">
+            <option value="6">6s</option>
+            <option value="9">9s</option>
+            <option value="12" selected>12s</option>
+            <option value="15">15s</option>
+            <option value="20">20s</option>
+            <option value="30">30s</option>
+          </select>
+          <select id="quick-quality">
+            <option value="social">Fast social</option>
+            <option value="professional" selected>Professional</option>
+            <option value="cinematic">Cinematic</option>
+          </select>
+          <button id="quick-generate" class="btn btn-primary ml-auto" disabled>Generate →</button>
+        </div>
+      </div>
+
+      <div class="hero__cta">
+        <a href="app.html" class="btn btn-ghost btn-lg">Open full studio</a>
+      </div>
+    </div>
+
+    <div class="hero__demo">
+      <div class="panel">
+        <div class="chrome"><span class="chrome__dot" style="background:#ff5f57"></span><span class="chrome__dot" style="background:#febc2e"></span><span class="chrome__dot" style="background:#28c840"></span><span class="chrome__label">motionforge · live preview</span></div>
+        <div class="hero__canvas-wrap"><canvas id="hero-canvas" aria-label="Live animation demo"></canvas></div>
+        <div class="hero__controls">
+          <button id="hero-play" class="btn btn-ghost btn-icon" aria-label="Play demo">❚❚</button>
+          <span id="hero-time" class="mono">0.00s</span>
+          <div class="hero__scrub"><div id="hero-scrub-fill"></div></div>
+          <span class="hero__tag">Real engine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="band"><div class="container">
+  <div class="section-head"><span class="label">How it works</span><h2>From a sentence to a finished film in four moves.</h2></div>
+  <div class="grid-4">
+    <div class="panel panel-pad"><div class="mono accent">01</div><h3>Describe your idea</h3><p>Write what you want to see. Set format, duration, and tone.</p></div>
+    <div class="panel panel-pad"><div class="mono accent">02</div><h3>AI plans the scenes</h3><p>A creative director directive turns your idea into a scene-by-scene plan.</p></div>
+    <div class="panel panel-pad"><div class="mono accent">03</div><h3>Watch it come alive</h3><p>The deterministic engine renders your spec in real time — grid, particles, kinetic type.</p></div>
+    <div class="panel panel-pad"><div class="mono accent">04</div><h3>Refine &amp; export</h3><p>Edit timing, type, and color in the studio. Export a real video file.</p></div>
+  </div>
+</div></section>
+
+<section id="features" class="container section">
+  <div class="section-head"><span class="label">Features</span><h2>A real editor, not a preview reel.</h2><p>Every capability below is implemented today. When something depends on an external service, we label it clearly.</p></div>
+  <div class="grid-3">
+    <div class="panel panel-pad"><div class="feature-icon"></div><h4>AI-assisted motion design</h4><p>A creative director directive distills professional motion-design principles into the system prompt for every generation.</p></div>
+    <div class="panel panel-pad"><div class="feature-icon"></div><h4>Editable scenes &amp; timing</h4><p>Every scene, layer, and second is yours. Trim, reorder, retime, ripple-edit.</p></div>
+    <div class="panel panel-pad"><div class="feature-icon"></div><h4>Kinetic typography</h4><p>Purpose-built type engine with entrance/exit choreography and RTL/Arabic shaping.</p></div>
+    <div class="panel panel-pad"><div class="feature-icon"></div><h4>Cinematic renderer</h4><p>Technical grids, progressive path drawing, number counters, scan lines, controlled glow.</p></div>
+    <div class="panel panel-pad"><div class="feature-icon"></div><h4>Deterministic timeline</h4><p>The same spec drives preview and export. No flaky frame captures. Same result every time.</p></div>
+    <div class="panel panel-pad"><div class="feature-icon"></div><h4>Browser-based workflow</h4><p>No plugins, no installs, no render farm. Works on modern Chrome, Edge, Firefox, Safari.</p></div>
+  </div>
+</section>
+
+<section id="templates" class="band"><div class="container">
+  <div class="section-head"><span class="label">Scene templates</span><h2>Composable scenes you can actually edit.</h2><p>Eight scene primitives, each with real parameters. Combine them into any narrative.</p></div>
+  <div class="grid-4" id="template-grid"></div>
+</div></section>
+
+<section class="container section">
+  <div class="section-head"><span class="label">Use cases</span><h2>Built for the work you actually ship.</h2></div>
+  <div class="grid-3">
+    <div class="panel panel-pad"><h4>SaaS product launches</h4><p>Dark, technical, cinematic — tailored for the message your users already understand.</p></div>
+    <div class="panel panel-pad"><h4>Small business ads</h4><p>Fast, punchy, mobile-first. Ready for Instagram, TikTok, and YouTube Shorts.</p></div>
+    <div class="panel panel-pad"><h4>Brand films</h4><p>Kinetic typography and controlled particle work for identity reveals.</p></div>
+    <div class="panel panel-pad"><h4>Data explainers</h4><p>Progressive chart drawing, animated stat counters, and metric panels.</p></div>
+    <div class="panel panel-pad"><h4>Educational content</h4><p>Process steps, feature grids, and clear typographic hierarchy.</p></div>
+    <div class="panel panel-pad"><h4>Agencies &amp; freelancers</h4><p>Fast turnaround, editable output, export-ready files your clients can approve.</p></div>
+  </div>
+</section>
+
+<section class="final-cta"><div class="container">
+  <h2>Make motion that <span class="gradient-text">actually says something.</span></h2>
+  <p>The studio, the engine, and the export pipeline are ready. Describe what you imagine.</p>
+  <a href="app.html" class="btn btn-primary btn-lg">Open the studio</a>
+</div></section>
+
+<footer class="site-footer"><div class="container site-footer__inner">
+  <div>© <span id="year"></span> <span data-brand>MotionForge AI</span></div>
+  <div class="site-footer__links">
+    <a href="app.html">Studio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="templates.html">Templates</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="config.js"></script>
+<script type="module">
+import { applyConfigToPage } from './assets/js/core/config.js';
+import { buildBrief, generateStoryboard, defaultBrand } from './assets/js/engine/storyboard.js';
+import { renderFrame, totalDuration } from './assets/js/engine/renderer.js';
+import { storage } from './assets/js/core/storage.js';
+
+applyConfigToPage();
+
+// Hero preview
+const brief = buildBrief({
+  prompt: 'Cinematic launch for a premium coffee brand with kinetic typography, glowing particles, animated statistics, and a dramatic logo reveal',
+  aspect: '16:9', duration: 9, quality: 'cinematic', sceneCount: 4, language: 'en', brand: defaultBrand,
+});
+const spec = generateStoryboard(brief, defaultBrand);
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+const wrap = canvas.parentElement;
+function size() {
+  const rect = wrap.getBoundingClientRect();
+  const aspect = spec.width / spec.height;
+  let w = rect.width, h = rect.height;
+  if (w / h > aspect) w = h * aspect; else h = w / aspect;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+  canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale((w * dpr) / spec.width, (h * dpr) / spec.height);
+}
+size();
+new ResizeObserver(size).observe(wrap);
+let playing = true, t = 0, last = performance.now();
+const total = totalDuration(spec);
+const timeEl = document.getElementById('hero-time');
+const fillEl = document.getElementById('hero-scrub-fill');
+const playBtn = document.getElementById('hero-play');
+function loop(now) {
+  const dt = (now - last) / 1000; last = now;
+  if (playing) { t += dt; if (t >= total) t = 0; }
+  renderFrame(ctx, spec, t);
+  timeEl.textContent = t.toFixed(2) + 's';
+  fillEl.style.width = (t / total * 100) + '%';
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+playBtn.addEventListener('click', () => { playing = !playing; playBtn.textContent = playing ? '❚❚' : '▶'; });
+
+// Template grid
+const templates = [
+  ['Logo reveal', 'Mark + particle glow'], ['Kinetic headline', 'Bold typographic entrance'],
+  ['Product showcase', 'Silhouette + callout'], ['Animated statistics', 'Progressive stat reveal'],
+  ['Feature grid', 'Staggered feature tiles'], ['Process steps', 'Numbered progressive flow'],
+  ['Call to action', 'Sharp closing frame'], ['Editorial quote', 'Minimal typographic card'],
+];
+document.getElementById('template-grid').innerHTML = templates.map(([a, b]) =>
+  '<a href="templates.html" class="card"><div style="aspect-ratio:16/9;border-radius:8px;background:linear-gradient(135deg,var(--ink-800),var(--ink-900));border:1px solid rgba(35,42,50,.6);position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:radial-gradient(200px 100px at 50% 100%,rgba(255,138,61,.25),transparent)"></div></div><div style="font-size:13.5px;font-weight:500;margin-top:12px">' + a + '</div><div style="font-size:11.5px;color:var(--text-muted)">' + b + '</div></a>'
+).join('');
+
+// Quick prompt → app.html with prefill
+const qp = document.getElementById('quick-prompt');
+const qg = document.getElementById('quick-generate');
+qp.addEventListener('input', () => { qg.disabled = qp.value.trim().length < 8; });
+qg.addEventListener('click', () => {
+  const params = new URLSearchParams({
+    prefill: qp.value.trim(),
+    aspect: document.getElementById('quick-aspect').value,
+    duration: document.getElementById('quick-duration').value,
+    quality: document.getElementById('quick-quality').value,
+    auto: '1',
+  });
+  storage.saveBrand(storage.loadBrand() || defaultBrand);
+  location.href = 'app.html?' + params.toString();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — MotionForge AI</title>
+<meta name="description" content="Privacy policy.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0d10">
+<meta property="og:title" content="Privacy — MotionForge AI">
+<meta property="og:description" content="Privacy policy.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0d10'/%3E%3Cpath d='M22 68V32l14 22 14-22v36' stroke='%23ff8a3d' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/landing.css">
+<style>.legal{padding:60px 0;max-width:720px;margin:0 auto}.legal h1{font-family:var(--font-display);font-size:34px;font-weight:600;margin:0 0 12px}.legal h2{font-family:var(--font-display);font-size:19px;font-weight:600;margin:32px 0 10px}.legal p,.legal li{color:var(--text-secondary);font-size:14px;line-height:1.75}</style>
+</head>
+<body>
+<header class="site-nav">
+  <div class="container site-nav__inner">
+    <a href="index.html" class="brand"><svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0b0d10" stroke="#232a32"/><path d="M22 68V32l14 22 14-22v36" stroke="#ff8a3d" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 68V32h16a12 12 0 0 1 0 24H62" stroke="#a78bfa" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-brand>MotionForge AI</span></a>
+    <nav class="site-nav__links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#templates">Templates</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <div class="site-nav__actions">
+      <a href="login.html" class="btn btn-subtle btn-sm">Sign in</a>
+      <a href="app.html" class="btn btn-primary btn-sm">Start creating</a>
+    </div>
+  </div>
+</header>
+<section class="container legal">
+  <h1>Privacy Policy</h1>
+  <p><em>Last updated: <span id="d"></span></em></p>
+  <p>Starter template. Replace with your actual privacy policy.</p>
+  <h2>What we store</h2>
+  <p>By default the studio keeps your projects and settings in your browser's local storage. Nothing is sent to our servers unless you enable cloud sync.</p>
+  <h2>AI providers</h2>
+  <p>If you connect a third-party AI provider (Groq, Gemini, OpenRouter), your prompt and API key are sent directly from your browser to that provider. They apply their own privacy terms.</p>
+  <h2>Analytics</h2>
+  <p>If enabled, analytics is privacy-respecting (Plausible/Umami). No cross-site tracking, no cookies.</p>
+  <h2>Your rights</h2>
+  <p>You can export all your data at any time from Settings → Export. Deleting projects removes them permanently.</p>
+  <h2>Contact</h2>
+  <p>Questions? <a href="mailto:" data-support style="color:var(--amber-500)">Email us</a>.</p>
+</section>
+<footer class="site-footer"><div class="container site-footer__inner">
+  <div>© <span id="year"></span> <span data-brand>MotionForge AI</span></div>
+  <div class="site-footer__links">
+    <a href="app.html">Studio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="templates.html">Templates</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="config.js"></script>
+<script type="module">
+import { applyConfigToPage } from './assets/js/core/config.js';
+applyConfigToPage();
+document.getElementById('d').textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>

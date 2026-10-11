@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms — MotionForge AI</title>
+<meta name="description" content="Terms of service.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b0d10">
+<meta property="og:title" content="Terms — MotionForge AI">
+<meta property="og:description" content="Terms of service.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0d10'/%3E%3Cpath d='M22 68V32l14 22 14-22v36' stroke='%23ff8a3d' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/landing.css">
+<style>.legal{padding:60px 0;max-width:720px;margin:0 auto}.legal h1{font-family:var(--font-display);font-size:34px;font-weight:600;margin:0 0 12px}.legal h2{font-family:var(--font-display);font-size:19px;font-weight:600;margin:32px 0 10px}.legal p,.legal li{color:var(--text-secondary);font-size:14px;line-height:1.75}.legal ul{padding-left:20px}</style>
+</head>
+<body>
+<header class="site-nav">
+  <div class="container site-nav__inner">
+    <a href="index.html" class="brand"><svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0b0d10" stroke="#232a32"/><path d="M22 68V32l14 22 14-22v36" stroke="#ff8a3d" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M62 68V32h16a12 12 0 0 1 0 24H62" stroke="#a78bfa" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-brand>MotionForge AI</span></a>
+    <nav class="site-nav__links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#templates">Templates</a>
+      <a href="pricing.html">Pricing</a>
+    </nav>
+    <div class="site-nav__actions">
+      <a href="login.html" class="btn btn-subtle btn-sm">Sign in</a>
+      <a href="app.html" class="btn btn-primary btn-sm">Start creating</a>
+    </div>
+  </div>
+</header>
+<section class="container legal">
+  <h1>Terms of Service</h1>
+  <p><em>Last updated: <span id="d"></span></em></p>
+  <p>This is a starter template. Replace this text with your real terms before publishing. Consult a qualified lawyer for your jurisdiction.</p>
+  <h2>1. Service</h2>
+  <p>MotionForge AI provides browser-based tools for creating motion graphics videos. The service is provided "as is" without warranty.</p>
+  <h2>2. Your content</h2>
+  <p>You retain all rights to the prompts, text, and materials you submit. You grant us the limited rights necessary to render and deliver your composition.</p>
+  <h2>3. Payment</h2>
+  <p>Paid plans are billed monthly through our payment provider. Cancellations take effect at the end of the current billing period.</p>
+  <h2>4. Acceptable use</h2>
+  <ul><li>Do not use the service to create illegal or harmful content.</li><li>Do not attempt to bypass usage limits or subscription gates.</li><li>Do not resell access without a written agreement.</li></ul>
+  <h2>5. Termination</h2>
+  <p>We may suspend access for violations of these terms. You may cancel at any time.</p>
+  <h2>6. Contact</h2>
+  <p>Questions? <a href="mailto:" data-support style="color:var(--amber-500)">Email us</a>.</p>
+</section>
+<footer class="site-footer"><div class="container site-footer__inner">
+  <div>© <span id="year"></span> <span data-brand>MotionForge AI</span></div>
+  <div class="site-footer__links">
+    <a href="app.html">Studio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="templates.html">Templates</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="config.js"></script>
+<script type="module">
+import { applyConfigToPage } from './assets/js/core/config.js';
+applyConfigToPage();
+document.getElementById('d').textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>

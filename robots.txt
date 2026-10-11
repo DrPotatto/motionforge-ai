@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /app.html
+Disallow: /editor.html
+Disallow: /projects.html
+Disallow: /brand.html
+Disallow: /settings.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /checkout-success.html
+Disallow: /checkout-cancel.html
+Sitemap: /sitemap.xml
