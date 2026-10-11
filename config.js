@@ -6,7 +6,7 @@ window.MF_CONFIG = {
   site: {
     name: 'MotionForge AI',
     tagline: 'Turn ideas into cinematic motion.',
-    url: 'https://your-domain.com',       // used for canonical + og:url
+    url: 'https://motionforge-ai.netlify.app',       // used for canonical + og:url
     supportEmail: 'hello@your-domain.com',
     contactPhone: '',                     // optional, shown in footer
   },
