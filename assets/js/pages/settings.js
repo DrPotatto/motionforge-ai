@@ -37,6 +37,7 @@ function refreshUI() {
 function linkFor(name) {
   const links = {
     groq: 'Free tier: 30 RPM / 14,400 RPD, no card. Get a key at <a href="https://console.groq.com/keys" target="_blank" rel="noopener" style="color:var(--amber-500)">console.groq.com/keys</a>.',
+    deepseek: 'Prepaid: top up a balance at <a href="https://platform.deepseek.com" target="_blank" rel="noopener" style="color:var(--amber-500)">platform.deepseek.com</a>. $2 is enough to start. Off-peak hours are half price.',
     gemini: 'Free tier: 15 RPM / 1,500 RPD, no card. Get a key at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:var(--amber-500)">aistudio.google.com/apikey</a>.',
     openrouter: 'Free tier: 20 RPM / 200 RPD on free models. Get a key at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener" style="color:var(--amber-500)">openrouter.ai/keys</a>.',
   };

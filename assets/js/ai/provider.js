@@ -2,9 +2,10 @@ import { groq } from './groq.js';
 import { gemini } from './gemini.js';
 import { openrouter } from './openrouter.js';
 import { local } from './local.js';
+import { deepseek } from './deepseek.js'; 
 import { storage } from '../core/storage.js';
 
-const PROVIDERS = { groq, gemini, openrouter, local };
+const PROVIDERS = { groq, gemini, openrouter, local, deepseek };
 export function getProvider() {
   const cfg = storage.loadAI();
   const name = cfg.provider || (window.MF_CONFIG?.ai?.defaultProvider || 'local');
