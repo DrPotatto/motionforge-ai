@@ -20,7 +20,10 @@ function updateEngineChip() {
   const chip = document.getElementById('engine-chip');
   const p = getProvider();
   if (p.name === 'local' || !p.configured) chip.textContent = 'Local engine';
-  else chip.textContent = p.name.charAt(0).toUpperCase() + p.name.slice(1) + ' · ready';
+  else {
+    const labels = { groq: 'Groq', gemini: 'Gemini', openrouter: 'OpenRouter', deepseek: 'DeepSeek' };
+    chip.textContent = (labels[p.name] || p.name) + ' · ready';
+  }
 }
 updateEngineChip();
 
