@@ -1,0 +1,38 @@
+# Netlify configuration for MotionForge AI
+# This is a static site — no build step required.
+
+[build]
+  publish = "."
+  command = ""
+
+# Security headers on every page
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Never cache HTML — always serve fresh so config.js changes are instant
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache assets for a week
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Keep dashboards out of search results even if robots.txt is ignored
+[[headers]]
+  for = "/app.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/editor.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
