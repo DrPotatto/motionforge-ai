@@ -3,51 +3,17 @@ import { buildDirectorDirective } from './creative-director.js';
 import { makeScene } from '../engine/templates.js';
 
 const ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
-const MODELS_ENDPOINT = 'https://api.groq.com/openai/v1/models';
-
-// Preferred order — we pick the first one Groq actually offers.
-const PREFERRED_MODELS = [
-  'openai/gpt-oss-120b',
-  'openai/gpt-oss-20b',
-  'qwen/qwen3.6-27b',
-  'qwen/qwen3-32b',
-  'llama-3.3-70b-versatile',   // kept as last-resort fallback
-  'llama-3.1-8b-instant',
-];
-
-let cachedModel = null;
-
-async function pickModel(apiKey, signal) {
-  if (cachedModel) return cachedModel;
-  try {
-    const res = await fetch(MODELS_ENDPOINT, {
-      headers: { 'Authorization': 'Bearer ' + apiKey },
-      signal,
-    });
-    if (res.ok) {
-      const data = await res.json();
-      const available = new Set((data.data || []).map(m => m.id));
-      for (const m of PREFERRED_MODELS) {
-        if (available.has(m)) { cachedModel = m; return m; }
-      }
-      // If none of our favourites are there, take the first text model returned
-      const first = (data.data || []).find(m => m.id && !m.id.includes('whisper'));
-      if (first) { cachedModel = first.id; return first.id; }
-    }
-  } catch (e) {
-    console.warn('[groq] model discovery failed, using default');
-  }
-  cachedModel = 'openai/gpt-oss-120b'; // sensible fallback
-  return cachedModel;
-}
+const MODEL = 'openai/gpt-oss-120b';
 
 async function call(system, user, apiKey, signal) {
-  const model = await pickModel(apiKey, signal);
   const res = await fetch(ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + apiKey,
+    },
     body: JSON.stringify({
-      model,
+      model: MODEL,
       temperature: 0.5,
       response_format: { type: 'json_object' },
       messages: [
@@ -59,8 +25,6 @@ async function call(system, user, apiKey, signal) {
   });
   if (!res.ok) {
     const t = await res.text().catch(() => '');
-    // If the model went bad, clear the cache so next call re-discovers
-    if (res.status === 404) cachedModel = null;
     throw new Error('Groq ' + res.status + ': ' + t.slice(0, 300));
   }
   const data = await res.json();
@@ -99,7 +63,6 @@ export const groq = {
         briefSource: 'ai',
         specSource: 'ai',
         provider: 'groq',
-        model: cachedModel,
       };
     } catch (e) {
       console.warn('[groq] director failed, using local engine', e);
